@@ -6,13 +6,11 @@
 /*   By: agenisse <agenisse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 14:52:56 by agenisse          #+#    #+#             */
-/*   Updated: 2025/01/16 16:43:27 by agenisse         ###   ########.fr       */
+/*   Updated: 2025/02/10 11:58:48 by agenisse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
-
-int g_display_enabled = 0;
 
 static void	sort_stack(t_stack *a, t_stack *b)
 {
@@ -41,7 +39,6 @@ int	main(int argc, char **argv)
 
 	if (argc > 2)
 	{
-		g_display_enabled = 1;
 		argv++;
 		argc--;
 	}
