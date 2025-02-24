@@ -6,7 +6,7 @@
 /*   By: agenisse <agenisse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 14:49:34 by agenisse          #+#    #+#             */
-/*   Updated: 2025/02/24 17:42:34 by agenisse         ###   ########.fr       */
+/*   Updated: 2025/02/24 18:33:12 by agenisse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ int					is_sorted(t_stack *stack);
 
 // Sort utils
 int					get_min(t_stack *stack);
-int					get_max(t_stack *stack);
+int					get_max_index(t_stack *stack);
 void				index_stack(t_stack *stack);
 
 // Validation

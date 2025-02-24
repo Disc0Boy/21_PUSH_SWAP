@@ -6,7 +6,7 @@
 /*   By: agenisse <agenisse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/24 17:41:58 by agenisse          #+#    #+#             */
-/*   Updated: 2025/02/24 18:07:13 by agenisse         ###   ########.fr       */
+/*   Updated: 2025/02/24 18:32:41 by agenisse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,20 +39,21 @@ static int	get_chunk_size(t_stack *a)
 static void	push_to_b_by_chunks(t_stack *a, t_stack *b)
 {
 	int	chunk_size;
-	int	pushed;
 	int	i;
+	int	max_kept;
 
 	chunk_size = get_chunk_size(a);
-	pushed = 0;
 	i = 0;
+	max_kept = a->size - 3;
 	while (a->size > 3)
 	{
-		if (a->head->index <= i)
+		if (a->head->index >= max_kept)
+			ra(a);
+		else if (a->head->index <= i)
 		{
 			pb(a, b);
 			rb(b);
 			i++;
-			pushed++;
 		}
 		else if (a->head->index <= (i + chunk_size))
 		{
@@ -62,22 +63,6 @@ static void	push_to_b_by_chunks(t_stack *a, t_stack *b)
 		else
 			ra(a);
 	}
-}
-
-static int	get_max_index(t_stack *stack)
-{
-	t_node	*current;
-	int		max_index;
-
-	current = stack->head;
-	max_index = current->index;
-	while (current)
-	{
-		if (current->index > max_index)
-			max_index = current->index;
-		current = current->next;
-	}
-	return (max_index);
 }
 
 static void	push_back_to_a(t_stack *a, t_stack *b)
@@ -102,12 +87,12 @@ static void	push_back_to_a(t_stack *a, t_stack *b)
 
 void	sort_infinite(t_stack *a, t_stack *b)
 {
-	index_stack(a);
 	if (a->size <= 3)
 	{
 		sort_three(a);
 		return ;
 	}
+	index_stack(a);
 	push_to_b_by_chunks(a, b);
 	sort_three(a);
 	push_back_to_a(a, b);
