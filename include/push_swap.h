@@ -6,7 +6,7 @@
 /*   By: agenisse <agenisse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 14:49:34 by agenisse          #+#    #+#             */
-/*   Updated: 2025/01/16 16:42:38 by agenisse         ###   ########.fr       */
+/*   Updated: 2025/02/24 17:42:34 by agenisse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include <limits.h>
 # include <stdlib.h>
 # include <unistd.h>
+# include <string.h>
 
 typedef struct s_node
 {
@@ -54,7 +55,6 @@ int					is_sorted(t_stack *stack);
 // Sort utils
 int					get_min(t_stack *stack);
 int					get_max(t_stack *stack);
-void				assign_index(t_stack *stack, int min, int *index);
 void				index_stack(t_stack *stack);
 
 // Validation
@@ -64,9 +64,13 @@ int					parse_args(int argc, char **argv, t_stack *a);
 void				error_exit(t_stack *a, t_stack *b);
 long				ft_atoi(const char *str);
 
-// Sort
+// Sort algorithms
 void				sort_three(t_stack *a);
 void				sort_five(t_stack *a, t_stack *b);
-void				radix_sort(t_stack *a, t_stack *b);
+void				sort_infinite(t_stack *a, t_stack *b);
+
+// Split utils
+char				**split_args(char *str);
+void				free_split_args(char **args);
 
 #endif

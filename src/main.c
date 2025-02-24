@@ -6,7 +6,7 @@
 /*   By: agenisse <agenisse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 14:52:56 by agenisse          #+#    #+#             */
-/*   Updated: 2025/02/10 11:58:48 by agenisse         ###   ########.fr       */
+/*   Updated: 2025/02/24 15:12:52 by agenisse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ static void	sort_stack(t_stack *a, t_stack *b)
 	else if (a->size <= 5)
 		sort_five(a, b);
 	else
-		radix_sort(a, b);
+		sort_infinite(a, b);
 }
 
 int	main(int argc, char **argv)
@@ -34,21 +34,20 @@ int	main(int argc, char **argv)
 	t_stack	*a;
 	t_stack	*b;
 
-	if (argc < 2)
+	if (argc < 2 || !argv[1][0])
 		return (0);
-
-	if (argc > 2)
-	{
-		argv++;
-		argc--;
-	}
-
 	a = init_stack('a');
 	b = init_stack('b');
 	if (!a || !b)
+	{
 		error_exit(a, b);
+		return (0);
+	}
 	if (!parse_args(argc, argv, a))
+	{
 		error_exit(a, b);
+		return (0);
+	}
 	index_stack(a);
 	sort_stack(a, b);
 	free_stack(a);
