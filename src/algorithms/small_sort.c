@@ -6,7 +6,7 @@
 /*   By: agenisse <agenisse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 14:52:05 by agenisse          #+#    #+#             */
-/*   Updated: 2025/01/16 14:56:34 by agenisse         ###   ########.fr       */
+/*   Updated: 2025/02/25 12:47:42 by agenisse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,19 +39,42 @@ void	sort_three(t_stack *a)
 		rra(a);
 }
 
+static int	find_shortest_path(t_stack *stack, int value)
+{
+	t_node	*current;
+	int		pos;
+	int		size;
+
+	pos = 0;
+	size = stack->size;
+	current = stack->head;
+	while (current)
+	{
+		if (current->value == value)
+			break ;
+		pos++;
+		current = current->next;
+	}
+	if (pos > size / 2)
+		return (-1);
+	return (1);
+}
+
 void	sort_five(t_stack *a, t_stack *b)
 {
-	int	smallest;
+	int	min;
+	int	direction;
 
 	while (a->size > 3)
 	{
-		smallest = get_min(a);
-		while (a->head->value != smallest)
+		min = get_min(a);
+		direction = find_shortest_path(a, min);
+		while (a->head->value != min)
 		{
-			if (a->head->next->value == smallest)
-				sa(a);
-			else
+			if (direction == 1)
 				ra(a);
+			else
+				rra(a);
 		}
 		pb(a, b);
 	}

@@ -6,7 +6,7 @@
 /*   By: agenisse <agenisse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 14:49:34 by agenisse          #+#    #+#             */
-/*   Updated: 2025/02/24 18:33:12 by agenisse         ###   ########.fr       */
+/*   Updated: 2025/02/25 11:06:42 by agenisse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include <string.h>
+# include "../src_bonus/libft/libft.h"
 
 typedef struct s_node
 {

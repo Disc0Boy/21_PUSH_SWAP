@@ -73,4 +73,51 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: all clean fclean re banner
+# Bonus part
+BONUS_NAME	= checker
+BONUS_SRCS	= src_bonus/checker_bonus.c \
+			  src_bonus/operations_bonus.c \
+			  src_bonus/get_next_line_bonus.c \
+			  src/utils/validation.c \
+			  src/utils/list_utils.c \
+			  src/utils/split_args.c \
+			  src/utils/sort_utils.c \
+			  src/utils/parse_utils.c \
+			  src_bonus/push_bonus.c \
+			  src_bonus/swap_bonus.c \
+			  src_bonus/rotate_bonus.c \
+			  src_bonus/reverse_rotate_bonus.c
+
+BONUS_OBJS	= $(BONUS_SRCS:.c=.o)
+
+bonus: banner_bonus $(BONUS_NAME)
+
+banner_bonus:
+	@printf "\n$(TURQUOISE)$(BOLD)"
+	@printf "██████╗  ██████╗ ███╗   ██╗██╗   ██╗███████╗\n"
+	@printf "██╔══██╗██╔═══██╗████╗  ██║██║   ██║██╔════╝\n"
+	@printf "██████╔╝██║   ██║██╔██╗ ██║██║   ██║███████╗\n"
+	@printf "██╔══██╗██║   ██║██║╚██╗██║██║   ██║╚════██║\n"
+	@printf "██████╔╝╚██████╔╝██║ ╚████║╚██████╔╝███████║\n"
+	@printf "╚═════╝  ╚═════╝ ╚═╝  ╚═══╝ ╚═════╝╚══════╝\n"
+	@printf "$(RESET)\n"
+	@printf "$(TEAL)$(ITALIC)Starting bonus compilation...$(RESET)\n\n"
+
+$(BONUS_NAME): $(BONUS_OBJS)
+	@printf "\n$(TURQUOISE)$(BOLD)All bonus files compiled successfully!$(RESET)\n"
+	@$(CC) $(CFLAGS) $(BONUS_OBJS) -o $(BONUS_NAME)
+	@printf "$(TURQUOISE)$(BOLD)Executable '$(BONUS_NAME)' created successfully!$(RESET)\n"
+
+clean: clean_bonus
+
+clean_bonus:
+	@$(RM) $(BONUS_OBJS)
+	@printf "$(CORAL)Bonus object files cleaned!$(RESET)\n"
+
+fclean: fclean_bonus
+
+fclean_bonus: clean_bonus
+	@$(RM) $(BONUS_NAME)
+	@printf "$(SALMON)Bonus executable removed!$(RESET)\n"
+
+.PHONY: all clean fclean re banner bonus banner_bonus clean_bonus fclean_bonus

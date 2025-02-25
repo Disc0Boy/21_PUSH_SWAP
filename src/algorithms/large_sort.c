@@ -6,7 +6,7 @@
 /*   By: agenisse <agenisse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/24 17:41:58 by agenisse          #+#    #+#             */
-/*   Updated: 2025/02/24 18:32:41 by agenisse         ###   ########.fr       */
+/*   Updated: 2025/02/25 10:16:40 by agenisse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ static int	get_chunk_size(t_stack *a)
 {
 	if (a->size <= 100)
 		return (a->size / 5);
-	return (a->size / 11);
+	return (a->size / 17);
 }
 
 static void	push_to_b_by_chunks(t_stack *a, t_stack *b)
